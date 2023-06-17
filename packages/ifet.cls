@@ -1,0 +1,9 @@
+\newenvironment*{citacao}
+{
+   \list{}
+   \small
+   \addtolength{\leftskip}{4cm}
+   \item[]
+   \begin{SingleSpace}
+   \end{SingleSpace}
+}
