@@ -808,6 +808,11 @@
 \newenvironment{capa}{\begin{titlingpage}}{\end{titlingpage}\cleardoublepage}
 % ---
 
+% Ambiente para definicao da Capa Trabalho
+\newenvironment{capatrabalho}{\begin{titlingpage}}{\end{titlingpage}\cleardoublepage}
+
+\newenvironment{capasimples}{\begin{titlingpage}}{\end{titlingpage}\cleardoublepage}
+
 % ---
 % Ficha catalografica (Dados internacionais de
 % catalogação-na-publicacao)
@@ -1238,3 +1243,79 @@
 %\newcommand{\inseredata}{\thedate}
 
 \newcommand\fonteautor{{\fonte{Elaborada pelo autor (\imprimirano).}}}
+
+% Comandos de dados - instituicao
+\providecommand{\imprimirtitulotrabalho}{}
+\newcommand{\titulotrabalho}[1]{\renewcommand{\imprimirtitulotrabalho}{#1}}
+
+\providecommand{\imprimirtitulodisciplina}{}
+\newcommand{\titulodisciplina}[1]{\renewcommand{\imprimirtitulodisciplina}{#1}}
+
+% ---
+% Impressão da Capa
+\newcommand{\imprimircapatrabalho}{%
+  \begin{capatrabalho}%         
+    \center    
+    \thispagestyle{empty}    
+    \begin{center} 
+    \includegraphics[scale=0.6]{Figuras/logo_vertical_ifsudestemg.png}
+    \end{center}
+
+    \vspace{2cm}
+    {\huge \imprimirtitulodisciplina}\\
+    \vspace{2cm}
+    
+    \noindent\rule{8cm}{0.4pt}
+    \vspace{10mm}
+    
+    {\ABNTEXchapterfont\large\imprimirtitulotrabalho}\\ 
+    \ABNTEXchapterfont\large\imprimirautor\\
+    \vspace{5mm} 
+    
+    %\vspace{10mm}    
+    \noindent\rule{8cm}{0.4pt}\\
+    \vspace{2cm} 
+   
+
+    \vfill
+    \begin{center}    
+    
+    \end{center}
+    \vfill
+    
+    \large\imprimirlocal
+
+    \large\imprimirdata
+    
+    \vspace*{1cm}
+  \end{capatrabalho}
+}
+
+
+% Impressão da Capa
+\newcommand{\imprimircapasimples}{%
+  \begin{capasimples}%         
+    \center    
+    \thispagestyle{empty}    
+    \begin{center} 
+    \includegraphics[scale=0.6]{Figuras/logo_vertical_ifsudestemg.png}
+    \end{center}
+
+    \vspace{2cm}
+    {\huge \imprimirtitulodisciplina}\\
+    \vspace{2cm}    
+
+
+    \vfill
+    \begin{center}    
+    
+    \end{center}
+    \vfill
+    
+    \large\imprimirlocal
+
+    \large\imprimirdata
+    
+    \vspace*{1cm}
+  \end{capasimples}
+}
