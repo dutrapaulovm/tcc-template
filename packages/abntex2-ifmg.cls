@@ -163,10 +163,12 @@
 \newcommand{\coorientadorname}{Coorientador:}
 \newcommand{\folhadeaprovacaoname}{FOLHA DE APROVA\c{C}\~AO}
 \newcommand{\resumoname}{\large RESUMO} 
+\newcommand{\resumonameeng}{\large ABSTRACT}
 \newcommand{\listadesiglasname}{\large LISTA DE ABREVIATURAS E SIGLAS}
 \newcommand{\listadesimbolosname}{\large LISTA DE S\'IMBOLOS}
 \newcommand{\fontename}{Fonte}
 \newcommand{\notaname}{Nota}
+
 %
 \addto\captionsbrazil{% portugues-brasil
   %% ajusta nomes padroes do babel
@@ -598,7 +600,7 @@
 % Secao terciaria (Subsection) Caixa baixa, Negrito, italico, tamanho 12
 \renewcommand*{\cftsubsectionfont}{\itshape\bfseries}
 % Secao quaternaria (Subsubsection) Caixa baixa, Negrito, sublinhado, tamanho 12
-\renewcommand*{\cftsubsubsectionfont}{\bfseries\coloruline[black]}
+\renewcommand*{\cftsubsubsectionfont}{\bfseries}
 % Seção quinaria (subsubsubsection) Caixa baixa, sem negrito, tamanho 12
 \renewcommand*{\cftparagraphfont}{\normalfont}
 
@@ -753,6 +755,9 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
+
+
+
 % Comandos de dados - titulo do documento
 \newcommand{\titulo}[1]{\title{#1}}
 \newcommand{\imprimirtitulo}{\thetitle}
@@ -774,6 +779,13 @@
 % Comandos de dados - local
 \providecommand{\imprimirlocal}{}
 \newcommand{\local}[1]{\renewcommand{\imprimirlocal}{#1}}
+
+\providecommand{\imprimirpalavraschavecat}{}
+\newcommand{\palavraschavecat}[1]{\renewcommand{\imprimirpalavraschavecat}{#1}}
+
+\providecommand{\imprimirpalavraschavetex}{}
+\newcommand{\palavraschavetex}[1]{\renewcommand{\imprimirpalavraschavetex}{#1}}
+
 
 % Comandos de dados - preambulo
 \providecommand{\imprimirpreambulo}{}
@@ -880,6 +892,19 @@
     % na classe memoir está \small
     \renewcommand{\abstracttextfont}{\normalfont\normalsize}
   }
+
+\newcommand{\imprimirTexto}[1]{%
+    \ifstrequal{#1}{\resumonameeng}{%
+        \textbf{Adviser:} \imprimirorientador
+    }{%
+        \ifstrequal{#1}{\resumoname}{%
+            \textbf{Orientador:} \imprimirorientador
+        }{%
+            Texto não reconhecido
+        }
+    }%
+}
+
   
 % A norma não diz nada sobre identação e separação entre parágrafos no abstract,
 % porém o uso mostra que muitos abstracts são montados sem identação.
@@ -887,15 +912,44 @@
    \setlength{\absparindent}{0pt}
 }
 
-\newenvironment{resumo}[1][\resumoname]{%
-   \PRIVATEbookmarkthis{#1}
-   \renewcommand{\abstractnamefont}{\chaptitlefont}
-   \renewcommand{\abstractname}{\ABNTEXchapterupperifneeded{#1}}
+\newenvironment{resumonew}[1][\resumoname]{%     
+\SingleSpacing \Large
+\textbf{\centering{\imprimirnivel~em~\imprimircurso}} \par
+\centering{\textbf{\imprimirtitulo}} \par
+   \PRIVATEbookmarkthis{#1}      
+   \renewcommand{\abstractnamefont}{\chaptitlefont}   
+   \renewcommand{\abstractname}{\ABNTEXchapterupperifneeded{#1}}   
+    
    \begin{abstract}
+    \centering{\normalfont \textbf{\imprimirautor}} 
+    \par
+    
+    \textbf{\imprimirnomemes, \imprimirano}    
+    \par    
+    \setlength{\parindent}{0pt}    
+    \par
+    \justifying      
+    \setlength{\parindent}{0pt}
+    \imprimirTexto{#1}
+    \par
+    \setlength{\parindent}{0pt}
+   
+  }{\end{abstract}\PRIVATEclearpageifneeded}
+
+
+\newenvironment{resumo}[1][\resumoname]{%     
+\SingleSpacing \Large
+\imprimirnivel~em~\imprimircurso \par
+\imprimirtitulo \par
+   \PRIVATEbookmarkthis{#1}   
+   \renewcommand{\abstractnamefont}{\chaptitlefont}
+   \renewcommand{\abstractname}{\ABNTEXchapterupperifneeded{#1}}   
+   \begin{abstract}
+   
   }{\end{abstract}\PRIVATEclearpageifneeded}
   
 \newenvironment{resumoumacoluna}[1][\resumoname]{%
-   \PRIVATEbookmarkthis{#1}
+   \PRIVATEbookmarkthis{#1}   
    \renewcommand{\abstractnamefont}{\chaptitlefont}
    \renewcommand{\abstractname}{\ABNTEXchapterupperifneeded{#1}}
    \begin{onecolabstract}
@@ -1251,6 +1305,10 @@
 \providecommand{\imprimirtitulodisciplina}{}
 \newcommand{\titulodisciplina}[1]{\renewcommand{\imprimirtitulodisciplina}{#1}}
 
+
+\providecommand{\imprimirnivel}{}
+\newcommand{\nivel}[1]{\renewcommand{\imprimirnivel}{#1}}
+
 % ---
 % Impressão da Capa
 \newcommand{\imprimircapatrabalho}{%
@@ -1319,3 +1377,5 @@
     \vspace*{1cm}
   \end{capasimples}
 }
+
+

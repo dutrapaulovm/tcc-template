@@ -37,7 +37,7 @@ Outro exemplo de expressão matemática:
 Para as equações seguir também os modelos acima.
 
 \section{Algoritmos} 
-Códigos de programas não são consideradas figuras, desta forma, não necessitam de possuir legenda. Por exemplo, o código a seguir mostra um trecho de uma programa em Python.
+Códigos de programas geralmente não são consideradas como figuras, desta forma, não necessitam de possuir legenda. Por exemplo, o código a seguir mostra um trecho de uma programa em Python.
 \begin{minted}[mathescape,
                linenos,
                numbersep=5pt,
@@ -48,23 +48,41 @@ Códigos de programas não são consideradas figuras, desta forma, não necessit
 
     for i in range(10):
         print(i)
-
 \end{minted}
-Algoritmos geralmente são apresentados como pseudo-códigos, os quais possuem uma formatação formal conhecida dos livros de computação. Diferentemente das listagens, os algoritmos costumam possuir legendas, como no algoritmo ~\ref{alg:exemplo} abaixo.
-\begin{algorithm*}
-\label{alg:exemplo}
- \caption{Ler número e imprimir se é par ou não.}
 
-     \Entrada{número, ($numero$).}
-     \Saida{Se o número é par ou não}
-     \Inicio{
-         \textbf{ler} $numero$\;
-         \eSe {$numero \% 2 = 0$} {
-             \textbf{imprimir} $numero$, " par"\;
-         } {
-         \textbf{imprimir} $numero$, " impar"\;
-         }
-        }
+Caso seja necessário considerar código como figuras, siga o exemplo da Figura~\ref{fig:codigo_python}.
+
+\begin{figure}[H] % h! para here, b para bottom e t para top
+\centering   
+\caption{Exemplo de código em Python.}    
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{python}
+    print("Hello World")
+
+    for i in range(10):
+        print(i)
+\end{minted}
+\label{fig:codigo_python}
+\end{figure}
+
+Algoritmos geralmente são apresentados como pseudo-códigos, os quais possuem uma formatação formal conhecida dos livros de computação. Diferentemente das listagens, os algoritmos costumam possuir legendas, como no algoritmo~\ref{alg:exemplo} abaixo.
+\begin{algorithm*}
+ \caption{Ler número e imprimir se é par ou não.}
+ \Entrada{número, ($numero$).}
+ \Saida{Se o número é par ou não}
+ \Inicio{
+     \textbf{ler} $numero$\;
+     \eSe {$numero \% 2 = 0$} {
+         \textbf{imprimir} $numero$, " par"\;
+     } {
+     \textbf{imprimir} $numero$, " impar"\;
+     }
+    }
+    \label{alg:exemplo}
 \end{algorithm*}
 
 \section{Notas de rodapé}

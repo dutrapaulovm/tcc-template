@@ -36,13 +36,17 @@
 	]{packages/abntex2-ifmg}
 	
 \input{packages/packages}  % Estrutura do Texto e Pacotes Principais
-
+%\selectlanguage{portuguese}
 \include{pretexto}
+
+
+
 
 % ------------------------------------------------------
 \makeindex   
 
 \begin{document} % Início do documento
+
 
 \frenchspacing  % Retira espaço obsoleto entre as frases.
 
@@ -50,16 +54,19 @@
 % -- Elementos Pré-Textuais: -------------------------------
 \pagenumbering{roman}
 
-\imprimircapatrabalho %Capa para trabalhos simples
+%Comentar essa linha caso seja TCC
+%\imprimircapatrabalho %Capa para trabalhos simples
+
 
 \imprimircapa  % Capa
 \imprimirfolhaderosto % Folha de rosto
 
-%\include{PreTextuais/FichaCatalografica}
+
+\include{PreTextuais/FichaCatalografica}
 \include{PreTextuais/FichaAprovacao} 
-\include{PreTextuais/Dedicatoria}
-\include{PreTextuais/Agradecimento}
-\include{PreTextuais/Epigrafe}
+%\include{PreTextuais/Dedicatoria}
+%\include{PreTextuais/Agradecimento}
+%\include{PreTextuais/Epigrafe}
 \include{PreTextuais/Resumo}
 
 \renewcommand{\listfigurename}{\large LISTA DE ILUSTRA\c{C}\~{O}ES}
@@ -69,9 +76,9 @@
 
 % inserir lista de quadros
 % ---
-\pdfbookmark[0]{\listofquadrosname}{loq}
-\listofquadros*
-\cleardoublepage
+%\pdfbookmark[0]{\listofquadrosname}{loq}
+%\listofquadros*
+%\cleardoublepage
 % ---
 
 \pdfbookmark[0]{\listtablename}{lot}
@@ -98,13 +105,13 @@
 % ----------------------------------------------------------
 % -- Capítulos do Trabalho: --------------------------------
 \pagenumbering{arabic} 
-\setcounter{page}{14} % Inserir aqui o número de páginas antes da introdução menos a capa
 \textual 
 
 %%%%%%%%%%%% ORDEM DOS ARQUIVOS %%%%%%%%%%%%%%%%%%%
 
+\setcounter{page}{10} % Inserir aqui o número de páginas antes da introdução menos a capa
 \include{Capitulos/Cap1-Introducao}
-\include{Capitulos/Cap2-RevisaoBibliografica}
+%\include{Capitulos/Cap2-RevisaoBibliografica}
 \include{Capitulos/Cap3-Metodologia}
 \include{Capitulos/Cap4-Resultados}
 \include{Capitulos/Cap5-Conclusao}

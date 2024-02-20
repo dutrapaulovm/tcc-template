@@ -7,6 +7,7 @@
 \usepackage[T1]{fontenc}		  % Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{mathptmx,helvet,courier}
+
 %\usepackage{pslatex}                % Usa a fonte Times New Roman
 \usepackage{lastpage}			    % Usado pela Ficha catalográfica
 \usepackage{indentfirst}		  % Indenta o primeiro parágrafo de cada seção.
@@ -27,8 +28,8 @@
 
 
 \usepackage{hyperref}
+\usepackage{lineno,hyperref}
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibliograficas
-
 
 %\usepackage[num]{abntex2cite}	% Citações padrão ABNT númerico
 \usepackage[alf,abnt-emphasize=bf,abnt-full-initials=no,abnt-etal-list=5,abnt-etal-text=emph,abnt-repeated-author-omit=yes]{abntex2cite}
@@ -42,7 +43,7 @@
 \usepackage{tikzsymbols} %para caracteres emoji
 \usepackage{stackengine}
 \usepackage{scalerel}
-
+\usepackage{lscape}
 \newcommand\dangersign[1][2ex]{%
   \renewcommand\stacktype{L}%
   \scaleto{\stackon[1.3pt]{\color{red}$\triangle$}{\tiny\bfseries !}}{#1}%
@@ -102,11 +103,20 @@
 \usepackage{tgtermes}
 \renewcommand{\ABNTEXchapterfont}{\rmfamily\bfseries}
 
+
+\providecommand{\imprimirnomemes}{}
+\newcommand{\nomemes}[1]{\renewcommand{\imprimirnomemes}{#1}}
+
 % Variáveis adicionais
 \providecommand{\imprimirautorcite}{}
 \newcommand{\autorcite}[1]{\renewcommand{\imprimirautorcite}{#1}} 
+
 \providecommand{\imprimirsigla}{}
 \newcommand{\sigla}[1]{\renewcommand{\imprimirsigla}{#1}}
+
+\providecommand{\imprimircampus}{}
+\newcommand{\campus}[1]{\renewcommand{\imprimircampus}{#1}}
+
 \providecommand{\imprimiruf}{}
 \newcommand{\uf}[1]{\renewcommand{\imprimiruf}{#1}}
 \providecommand{\imprimircurso}{}
@@ -193,7 +203,7 @@
     \vfill 
     \begin{flushright} 
     \parbox{0.6\linewidth}{
-		\imprimirtipotrabalho~ apresentado ao Curso de \imprimircurso~ do \imprimirinstituicao~ - \imprimirinstituto~ para a obtenção do título de \imprimirgrau. \\
+		\imprimirtipotrabalho~apresentado ao \imprimirinstituto,~do \imprimirinstituicao,~como parte das exigências do curso de \imprimircurso~para a obtenção do título de \imprimirgrau. \\
 		\vfill
 		\textbf{\imprimirorientadorRotulo}~\imprimirorientador \\
 		\vfill 
@@ -218,14 +228,14 @@
 % Define os textos da citação
 \addto\captionsbrazil{% portugues-brasil
     % Usado sem a opção hyperpageref de backref
-    \renewcommand{\backrefpagesname}{Citado na(s) p{\'a}gina(s):~}
+    %\renewcommand{\backrefpagesname}{Citado na(s) p{\'a}gina(s):~}
     \renewcommand*{\backrefalt}[4]{
     	\ifcase #1 %
-    		Nenhuma cita{\c c}{\~a}o no texto.%
+    		%Nenhuma cita{\c c}{\~a}o no texto.%
     	\or
-    		Citado na p{\'a}gina #2.%
+    		%Citado na p{\'a}gina #2.%
     	\else
-    		Citado #1 vezes nas p{\'a}ginas #2.%
+    		%Citado #1 vezes nas p{\'a}ginas #2.%
     	\fi}%
 }
 \addto\captionsenglish{% ingles
@@ -279,7 +289,24 @@
 \usepackage{multirow}
 \usepackage{multicol}
 \usepackage{bigstrut}
+\usepackage{bm}
+\usepackage{ragged2e} % Pacote para justificar o texto
+\usepackage{datetime}
+\usepackage{iflang}
+\usepackage{ifthen}
+\usepackage{xstring}
+\usepackage{etoolbox}
+\usepackage{atbegshi}
+\usepackage{fancyhdr}
 
+\newcommand{\removeSpaces}[1]{%
+  \StrRemoveSpaces{#1}[\result]%
+  \result
+}
+
+\newcommand{\Nota}[1]{\todo[inline]{#1}}
+\newcommand{\NotaOK}[1]{\todo[inline]{Corrigido}}
+\newcommand{\rev}[1]{\textcolor{red}{\textbf #1}}
 
 
 
