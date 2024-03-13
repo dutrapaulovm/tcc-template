@@ -924,7 +924,7 @@
     \centering{\normalfont \textbf{\imprimirautor}} 
     \par
     
-    \textbf{\imprimirnomemes, \imprimirano}    
+    \textbf{\monthnamept{\month}, \imprimirano}    
     \par    
     \setlength{\parindent}{0pt}    
     \par
@@ -935,6 +935,33 @@
     \setlength{\parindent}{0pt}
    
   }{\end{abstract}\PRIVATEclearpageifneeded}
+
+
+
+\newenvironment{resumoabstract}[1][\resumoname]{%     
+\SingleSpacing \Large
+\textbf{\centering{\imprimirnivel~em~\imprimircurso}} \par
+\centering{\textbf{\imprimirtitulo}} \par
+   \PRIVATEbookmarkthis{#1}      
+   \renewcommand{\abstractnamefont}{\chaptitlefont}   
+   \renewcommand{\abstractname}{\ABNTEXchapterupperifneeded{#1}}   
+    
+   \begin{abstract}
+    \centering{\normalfont \textbf{\imprimirautor}} 
+    \par    
+    \textbf{\monthnameen{\month}, \imprimirano}    
+    \par    
+    \setlength{\parindent}{0pt}    
+    \par
+    \justifying      
+    \setlength{\parindent}{0pt}
+    \imprimirTexto{#1}
+    \par
+    \setlength{\parindent}{0pt}
+   
+  }{\end{abstract}\PRIVATEclearpageifneeded}
+
+
 
 
 \newenvironment{resumo}[1][\resumoname]{%     

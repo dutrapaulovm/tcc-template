@@ -43,3 +43,29 @@
 \end{center}}
 }
 
+
+\usepackage{changepage}
+\usepackage{etoolbox}
+\usepackage{atbegshi}
+
+% Novo contador para rastrear o número total de páginas
+\newcounter{totalpages}
+\setcounter{totalpages}{0} % Inicia a contagem em 0
+
+% Novo comando para iniciar a numeração de página a partir de um capítulo específico
+\newcommand{\startPageNumbering}{%
+  \cleardoublepage
+  \ifnum\value{totalpages}=0
+    \addtocounter{totalpages}{\value{page}} % Soma o número total de páginas já impressas
+  \fi
+  \begin{adjustwidth}{-1in}{-1in}
+    \setcounter{page}{\value{totalpages}} % Define o número da página inicial do capítulo
+    \pagestyle{plain} % ou \pagestyle{headings} conforme desejado
+  \end{adjustwidth}
+}
+
+% Modifica o comando \chapter para incluir o ajuste automático da numeração da página
+\appto\chapter{\startPageNumbering}
+
+% Captura o número total de páginas antes do primeiro capítulo
+\AtBeginShipout{\ifnum\value{chapter}=0\setcounter{totalpages}{\number\value{page}}\fi}
